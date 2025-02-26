@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# React Toast Notification System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project implements a flexible and reusable toast notification system for React applications using the Context API.
 
 ## Available Scripts
 
@@ -14,57 +14,71 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+## Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* **Global Toast Management:** Uses React's Context API to easily manage and display toast messages from any component.
+* **Customizable Toasts:** Allows for customization of toast content, type (success, error, warning, info), duration, and styling.
+* **Dismissable Toasts:** Provides an option to make toasts dismissable by the user.
+* **Automatic Removal:** Toasts can be configured to automatically disappear after a specified duration.
+* **Unique IDs:** Each toast is assigned a unique ID for proper tracking and removal.
+* **Tailwind CSS Friendly:** uses tailwind classes for easy styling.
 
-### `npm run build`
+## Usage
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `useToastMessage`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* A custom hook that provides access to the `addToast` function.
+* Use the `useToastMessage` hook in any component where you want to display a toast:**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    ```javascript
+    import React from 'react';
+    import { useToastMessage } from './components/notifications/ToastProvider';
 
-### `npm run eject`
+    function MyComponent() {
+      const { addToast } = useToastMessage();
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+      const handleClick = () => {
+        addToast({
+          content: 'This is a success toast!',
+          type: 'success',
+          duration: 3000, // 3 seconds
+          dismissable: true,
+        });
+      };
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+      return (
+        <button onClick={handleClick}>Show Toast</button>
+      );
+    }
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    export default MyComponent;
+    ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### `addToast(props)`
 
-## Learn More
+* Adds a new toast message.
+* `props` object:
+    * `content` (required): The content of the toast (string or JSX).
+    * `type` (optional): The type of toast ('success', 'error', 'warning', 'info'). Defaults to 'info'.
+    * `duration` (optional): The duration in milliseconds before the toast disappears. If set to 0, it will not disappear automatically. Defaults to 8000.
+    * `dismissable` (optional): Whether the toast can be dismissed by the user. Defaults to false.
+    * `color` (optional): An object to override the default colors. {background: '#...', text: '#...', border:'#...'}
+    * `icon` (optional): a custom image to use as the icon.
+    * `action` (optional): a function that is ran when the toast is clicked.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### `ToastMessage`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* Renders an individual toast message.
+* Receives props from the `ToastMessageProvider`.
+* Includes a close button if `dismissable` is true.
 
-### Code Splitting
+## Styling
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+* The component uses Tailwind CSS for basic styling. You can customize the styles by modifying the Tailwind CSS classes in the `ToastMessage.js` file.
+* You can override the default colors of the toast by providing a color object to the addToast function.
 
-### Analyzing the Bundle Size
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

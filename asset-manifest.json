@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/toast-notification/static/css/main.f855e6bc.css",
+    "main.js": "/toast-notification/static/js/main.eea6b150.js",
+    "static/js/453.23d178fa.chunk.js": "/toast-notification/static/js/453.23d178fa.chunk.js",
+    "static/media/check.png": "/toast-notification/static/media/check.0e163e83492acb677d72.png",
+    "static/media/error.png": "/toast-notification/static/media/error.25b7fe2e8e657f3b017f.png",
+    "index.html": "/toast-notification/index.html",
+    "main.f855e6bc.css.map": "/toast-notification/static/css/main.f855e6bc.css.map",
+    "main.eea6b150.js.map": "/toast-notification/static/js/main.eea6b150.js.map",
+    "453.23d178fa.chunk.js.map": "/toast-notification/static/js/453.23d178fa.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f855e6bc.css",
+    "static/js/main.eea6b150.js"
+  ]
+}
